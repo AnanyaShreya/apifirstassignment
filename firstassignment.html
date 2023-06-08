@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joke Generator</title>
+    <style>
+        body 
+        {
+        background: url(emojiImage.png);
+        background-repeat: no-repeat;
+        background-size:cover;
+        justify-content: center;
+        padding-left: 100px;
+        padding-top: 200px;
+        padding-right: 100px;
+        padding-bottom: 100px;
+        
+    }
+        #container{
+            background-color: #FFF3E2;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px;
+            padding : 50px 20px;
+            max-width: 100%;
+            width: 800px;
+            font-family: 'Mukta', sans-serif;
+            color: #212A3E;
+
+        }
+        .btn{
+            background-color: #9E4784;
+            border : 0;
+            border-radius : 10px;
+            box-shadow: 0 5px 15px;
+            color: #fff;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 14px 40px;
+        }   
+        
+        
+        </style>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Mukta:wght@500&display=swap" rel="stylesheet">
+    <script>
+        function generateJoke(){
+            var data = fetch("https://official-joke-api.appspot.com/random_joke")
+            data.then((result)=>{
+                result.json().then((res)=>{
+                    var element = document.getElementById("container")
+                    console.log(element);
+                    element.innerHTML=`Setup : ${res.setup} </br> 
+                    Punchline : ${res.punchline}`
+                })
+            })
+        }
+    </script>
+</head>
+<body>   
+<div id="container">
+    <h1>You Laugh You Lose!</h1>
+</div>
+<button class="btn" onclick ="generateJoke()">Generate Joke &#128518;</button>
+</body>
+</html>
